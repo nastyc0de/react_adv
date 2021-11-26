@@ -1,13 +1,7 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  NavLink,
-} from "react-router-dom";
-import ShoppingPage from "../02-component-patterns/pages/ShoppingPage";
+import {BrowserRouter as Router, Routes, Route, Navigate, NavLink} from "react-router-dom";
 import logo from '../logo.svg';
-import { routes } from './routes';
+import { routes } from '../01-lazyload/router/routes';
+import { LazyPage1, LazyPage2, LazyPage3 } from '../01-lazyload/pages';
 
 
 const Navigation = () => {
@@ -28,11 +22,16 @@ const Navigation = () => {
             
           </ul>
         </nav>
-
         <Routes>
-          <Route path="/" element={<ShoppingPage/>}/>
+          <Route path="/page1" element={<LazyPage1/>}/>
+          <Route path="/page2" element={<LazyPage2/>}/>
+          <Route path="/page3" element={<LazyPage3/>}/>
           <Route path='*' element={<Navigate replace to={routes[0].path} />} />
         </Routes>
+        {/* <Routes>
+          <Route path="/" element={<ShoppingPage/>}/>
+          <Route path='*' element={<Navigate replace to={routes[0].path} />} />
+        </Routes> */}
       </div>
     </Router>
   );
