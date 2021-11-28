@@ -8,27 +8,29 @@ import styles from '../styles/styles.module.css'
 export const ProductContext = createContext({} as ProductContextProps);
 const {Provider} = ProductContext;
 
-export const ProductCard = ({children, product, className, style, onChange, value}:Props) => {
+export const ProductCard = ({children, product, className, style, onChange, value, initialValues}:Props) => {
     
-    const {counter, increaseBy} = useProduct({onChange, product, value});
+    const {counter, increaseBy, maxCount, isMaxCountReached, reset} = useProduct({onChange, product, value, initialValues});
     return (
         <Provider value={{
             counter,
             increaseBy,
-            product
+            product,
+            maxCount
         }}>
                 <div className={`${styles.productCard} ${className}`
             
             }
             style={style}
             >
-                {children}
-                {/* <ProductImage img={img}/>
-                <ProductTitle title={title}/>
-                <ProductButtons 
-                    count={counter}
-                    increase={increaseBy}
-                />  */}
+                {children({
+                    count: counter,
+                    isMaxCountReached,
+                    maxCount: initialValues?.maxCount,
+                    product,
+                    increaseBy,
+                    reset,
+                })}
             </div>
         </Provider>
         
