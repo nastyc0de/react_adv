@@ -1,0 +1,23 @@
+[
+    {
+        "type":"input",
+        "name":"firstname",
+        "placeholder":"Ponga un nombre",
+        "label":"First Name",
+        "value":""
+    },
+    {
+        "type":"input",
+        "name":"lastname",
+        "placeholder":"Ponga un apellido",
+        "label":"Last Name",
+        "value":""
+    },
+    {
+        "type":"email",
+        "name":"email",
+        "placeholder":"Ponga un email",
+        "label":"Email",
+        "value":""
+    }
+]
